@@ -34,6 +34,9 @@ body {
 }
 .icon {
   fill: currentColor;
+  transition-property: fill;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .list {
   padding: 0;
@@ -83,6 +86,9 @@ header {
   padding-top: 32px;
   padding-bottom: 32px;
   color: var(--title-text-color);
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .site-nav-item:not(:last-child) {
   margin-right: 40px;
@@ -109,6 +115,9 @@ header {
   font-weight: 500;
   line-height: 1.14;
   letter-spacing: 0.02em;
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .mail-tel-item + .mail-tel-item {
   margin-left: 50px;
@@ -163,6 +172,7 @@ header {
 }
 .hero-button {
   border-radius: 4px;
+  border-color: var(--accent-color);
   padding: 10px 32px;
   min-width: 200px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
@@ -171,11 +181,13 @@ header {
   line-height: 1.87em;
   color: var(--white-color);
   background-color: var(--accent-color);
+  transition-property: color, background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .hero-button:hover {
   color: var(--accent-color);
   background-color: var(--white-color);
-  border-color: var(--accent-color);
 }
 /* --------------------Особенности-------------------- */
 .features {
@@ -310,11 +322,11 @@ header {
   height: 44px;
   border-radius: 50%;
   fill: var(--icon-color);
+  transition-property: fill, background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-.p-linkedin::hover,
-.p-linkedin::focus {
-  background-color: var(--accent-color);
-}
+
 .p-social-list {
   justify-content: center;
   margin-top: 16px;
@@ -356,6 +368,9 @@ header {
   height: 92px;
   border: 1px solid var(--icon-color);
   border-radius: 4px;
+  transition-property: fill, border;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .client:hover,
 .client:focus {
@@ -385,6 +400,9 @@ footer {
   font-style: normal;
   letter-spacing: 0.03em;
   color: var(--white-color);
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .contacts-address:hover,
 .contacts-address:focus {
@@ -394,6 +412,9 @@ footer {
   letter-spacing: 0.03em;
   font-style: normal;
   color: rgba(255, 255, 255, 0.6);
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .contacts-item:hover,
 .contacts-item:focus {
@@ -423,6 +444,9 @@ footer {
   height: 44px;
   border-radius: 50%;
   fill: var(--white-color);
+  transition-property: background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .linkedin:hover,
 .facebook:hover,
@@ -456,6 +480,9 @@ footer {
   letter-spacing: 0.03em;
   color: var(--title-text-color);
   background-color: var (--background-color);
+  transition-property: color, background-color, box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .portfolio-filter-item:focus,
 .portfolio-filter-item:hover {
@@ -476,14 +503,37 @@ footer {
   flex-basis: calc(100% / 3 - var(--card-gap));
   margin-bottom: var(--card-gap);
   margin-left: var(--card-gap);
+  transition-property: box-shadow, transform;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.work-img {
+  position: relative;
+  overflow: hidden;
 }
 .work:hover {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
 }
+.work:hover .work-overlay {
+  transform: translateY(-100%);
+}
 img {
   display: block;
   max-width: 100%;
+}
+.work-overlay {
+  position: absolute;
+  font-size: 18px;
+  line-height: 1.55;
+  letter-spacing: 3%;
+  color: var(--white-color);
+  background-color: rgba(33, 150, 243, 0.9);
+  padding: 63px 24px;
+  overflow: auto;
+  transform: translateY(0%);
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .work-card {
   padding: 20px 0 20px 24px;
