@@ -587,13 +587,13 @@ img {
   transform: translate(-50%, -50%) scale(0.7);
 }
 .modal {
-  position: absolute;
+  position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(1);
   transition: transform 250ms var(--timing-function);
   min-height: 581px;
-  min-width: 528px;
+  width: 528px;
   background-color: var(--white-color);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
@@ -608,7 +608,6 @@ img {
   width: 30px;
   border-radius: 50%;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  top: 0;
-  right: 0;
-  margin: 8px;
+  top: 8px;
+  right: 8px;
 }
