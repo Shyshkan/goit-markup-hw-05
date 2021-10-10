@@ -8,6 +8,7 @@
   --white-color: #ffffff;
   --card-gap: 30px;
   --icon-color: #afb1b8;
+  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -34,9 +35,7 @@ body {
 }
 .icon {
   fill: currentColor;
-  transition-property: fill;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: fill 250ms var(--timing-function);
 }
 .list {
   padding: 0;
@@ -86,9 +85,7 @@ header {
   padding-top: 32px;
   padding-bottom: 32px;
   color: var(--title-text-color);
-  transition-property: color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms var(--timing-function);
 }
 .site-nav-item:not(:last-child) {
   margin-right: 40px;
@@ -100,7 +97,19 @@ header {
 }
 .site-nav-item .link.current {
   color: var(--accent-color);
+  position: relative;
 }
+.current::after {
+  position: absolute;
+  display: block;
+  content: "";
+  width: 100%;
+  height: 4px;
+  background-color: var(--accent-color);
+  border-radius: 2px;
+  bottom: 0;
+}
+
 .mail-tel {
   display: flex;
   margin-left: auto;
@@ -115,9 +124,7 @@ header {
   font-weight: 500;
   line-height: 1.14;
   letter-spacing: 0.02em;
-  transition-property: color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms var(--timing-function);
 }
 .mail-tel-item + .mail-tel-item {
   margin-left: 50px;
@@ -183,7 +190,7 @@ header {
   background-color: var(--accent-color);
   transition-property: color, background-color;
   transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: var(--timing-function);
 }
 .hero-button:hover {
   color: var(--accent-color);
@@ -324,7 +331,7 @@ header {
   fill: var(--icon-color);
   transition-property: fill, background-color;
   transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: var(--timing-function);
 }
 
 .p-social-list {
@@ -370,7 +377,7 @@ header {
   border-radius: 4px;
   transition-property: fill, border;
   transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: var(--timing-function);
 }
 .client:hover,
 .client:focus {
@@ -400,9 +407,7 @@ footer {
   font-style: normal;
   letter-spacing: 0.03em;
   color: var(--white-color);
-  transition-property: color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms var(--timing-function);
 }
 .contacts-address:hover,
 .contacts-address:focus {
@@ -412,9 +417,7 @@ footer {
   letter-spacing: 0.03em;
   font-style: normal;
   color: rgba(255, 255, 255, 0.6);
-  transition-property: color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms var(--timing-function);
 }
 .contacts-item:hover,
 .contacts-item:focus {
@@ -444,9 +447,7 @@ footer {
   height: 44px;
   border-radius: 50%;
   fill: var(--white-color);
-  transition-property: background-color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 250ms var(--timing-function);
 }
 .linkedin:hover,
 .facebook:hover,
@@ -482,7 +483,7 @@ footer {
   background-color: var (--background-color);
   transition-property: color, background-color, box-shadow;
   transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: var(--timing-function);
 }
 .portfolio-filter-item:focus,
 .portfolio-filter-item:hover {
@@ -505,7 +506,7 @@ footer {
   margin-left: var(--card-gap);
   transition-property: box-shadow, transform;
   transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: var(--timing-function);
 }
 .work-img {
   position: relative;
@@ -533,7 +534,7 @@ img {
   overflow: auto;
   transform: translateY(0%);
   transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: var(--timing-function);
 }
 .work-card {
   padding: 20px 0 20px 24px;
@@ -551,4 +552,48 @@ img {
   font-size: 16px;
   line-height: 1.87em;
   color: var(--primary-text-color);
+}
+
+/* --------------------------Модалка --------------------------*/
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 250ms var(--timing-function);
+}
+.backdrop.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0.7);
+}
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 250ms var(--timing-function);
+  min-height: 581px;
+  min-width: 528px;
+  background-color: var(--white-color);
+}
+.close-btn {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  top: 0;
+  right: 0;
+  margin: 8px;
 }
