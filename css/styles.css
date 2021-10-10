@@ -535,10 +535,6 @@ img {
 }
 .work-overlay {
   position: absolute;
-  font-size: 18px;
-  line-height: 1.55;
-  letter-spacing: 3%;
-  color: var(--white-color);
   background-color: rgba(33, 150, 243, 0.9);
   padding: 63px 24px;
   overflow: auto;
@@ -546,7 +542,12 @@ img {
   transition-duration: 250ms;
   transition-timing-function: var(--timing-function);
 }
-
+.work-overlay > p {
+  font-size: 18px;
+  line-height: 1.55;
+  letter-spacing: 3%;
+  color: var(--white-color);
+}
 .work-card {
   padding: 20px 0 20px 24px;
 }
